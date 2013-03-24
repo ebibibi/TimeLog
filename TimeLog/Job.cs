@@ -8,11 +8,15 @@ namespace TimeLog
     public class Job
     {
 
+        public string name { get; set; }
+        public DateTime startTime { get; set; }
+        public DateTime endTime { get; set; }
+        
+
         public Job(string jobname)
         {
             this.name = jobname;
         }
-        public string name { get; set; }
 
         public void start(DateTime startTime)
         {
@@ -20,14 +24,10 @@ namespace TimeLog
             return;
         }
 
-        public DateTime startTime { get; set; }
-
         public void stop(DateTime endTime)
         {
             this.endTime = endTime;
             return;
         }
-
-        public DateTime endTime { get; set; }
     }
 }
