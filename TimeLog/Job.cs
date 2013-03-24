@@ -21,5 +21,13 @@ namespace TimeLog
         }
 
         public DateTime startTime { get; set; }
+
+        public void stop(DateTime endTime)
+        {
+            this.endTime = endTime;
+            return;
+        }
+
+        public DateTime endTime { get; set; }
     }
 }
