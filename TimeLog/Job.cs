@@ -17,7 +17,9 @@ namespace TimeLog
         {
             this.name = jobname;
             this.isRunning = false;
+            this.startTime = new DateTime(0); 
             this.endTime = new DateTime(0);
+            
         }
 
         public void start(DateTime startTime)
