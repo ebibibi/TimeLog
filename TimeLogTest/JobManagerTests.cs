@@ -11,14 +11,15 @@ namespace TimeLogTest
         public void CreateJob()
         {
             //Setup
+            string jobname = "CreateJob test job1";
             JobManager manager = new JobManager();
 
             //Execute
-            manager.CreateNewJob("test job1");
+            manager.CreateNewJob(jobname);
             
             //Test
-            Assert.IsTrue(manager.IsThereJob("test job1"));
-            Assert.IsFalse(manager.IsThereJob("test job2"));
+            Assert.IsTrue(manager.IsThereJob(jobname));
+            Assert.IsFalse(manager.IsThereJob(jobname + "dummy"));
 
         }
 
@@ -26,18 +27,76 @@ namespace TimeLogTest
         public void Create2Jobs()
         {
             //Setup
+            string jobname1 = "Create2Jobs test job1";
+            string jobname2 = "Create2Jobs test job2";
             JobManager manager = new JobManager();
 
             //Execute
-            manager.CreateNewJob("test job1");
-            manager.CreateNewJob("test job2");
+            manager.CreateNewJob(jobname1);
+            manager.CreateNewJob(jobname2);
             
             //Test
-            Assert.IsTrue(manager.IsThereJob("test job1"));
-            Assert.IsTrue(manager.IsThereJob("test job2"));
+            Assert.IsTrue(manager.IsThereJob(jobname1));
+            Assert.IsTrue(manager.IsThereJob(jobname2));
+            Assert.IsFalse(manager.IsThereJob(jobname1 + "dummy"));
 
         }
 
-        
+        [TestMethod]
+        public void CreateAndStartJob()
+        {
+            //Setup
+            string jobname = "CreateAndStartJob test job1";
+            JobManager manager = new JobManager();
+
+            //Execute
+            manager.CreateNewJob(jobname);
+            manager.StartJob(jobname);
+
+            //Test
+            Assert.IsTrue(manager.IsRunningJob(jobname));
+            Assert.IsFalse(manager.IsRunningJob(jobname + "dummy"));
+        }
+
+        [TestMethod]
+        public void CreateAndStart2Jobs()
+        {
+            //Setup
+            string jobname1 = "CreateAndStart2Jobs test job1";
+            string jobname2 = "CreateAndStart2Jobs test job2";
+            JobManager manager = new JobManager();
+
+            //Execute
+            manager.CreateNewJob(jobname1);
+            manager.StartJob(jobname1);
+            manager.CreateNewJob(jobname2);
+            manager.StartJob(jobname2);
+
+            //Test
+            Assert.IsTrue(manager.IsRunningJob(jobname1));
+            Assert.IsTrue(manager.IsRunningJob(jobname2));
+        }
+
+        [TestMethod]
+        public void CreateAndStartAndStopJob()
+        {
+            //Setup
+            string jobname = "CreateAndStartAndStopJob test job1";
+            JobManager manager = new JobManager();
+
+            //Execute
+            manager.CreateNewJob(jobname);
+            manager.StartJob(jobname);
+
+            //Test
+            Assert.IsTrue(manager.IsRunningJob(jobname));
+            
+            //Execute
+            manager.StopJob(jobname);
+
+            //Test
+            Assert.IsFalse(manager.IsRunningJob(jobname));
+            
+        }
     }
 }

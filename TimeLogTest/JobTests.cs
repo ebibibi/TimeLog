@@ -98,5 +98,32 @@ namespace TimeLogTest
             Assert.AreEqual<DateTime>(endTime2, job2.endTime);
 
         }
+
+        [TestMethod]
+        public void CheckIsJobRunning()
+        {
+            //Setup
+            Job job = new Job("job");
+            DateTime startTime = new DateTime(2001, 1, 1, 1, 1, 1);
+            DateTime endTime = new DateTime(2001, 1, 1, 2, 1, 1);
+
+            //Test
+            Assert.IsFalse(job.isRunning);
+
+            //Execute
+            job.start(startTime);
+
+            //Test
+            Assert.IsTrue(job.isRunning);
+            
+            //Execute
+            job.stop(endTime);
+
+            //Test
+            Assert.IsFalse(job.isRunning);
+
+            Assert.AreEqual<DateTime>(startTime, job.startTime);
+            Assert.AreEqual<DateTime>(endTime, job.endTime);
+        }
     }
 }

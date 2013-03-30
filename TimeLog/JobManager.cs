@@ -34,6 +34,29 @@ namespace TimeLog
             }
                 
         }
+
+        public void StartJob(string jobname)
+        {
+            Job job = jobs[jobname];
+            job.start(DateTime.Now);
+        }
+
+        public bool IsRunningJob(string jobname)
+        {
+            Job job;
+            try
+            {
+                job = jobs[jobname];
+            } catch {
+                return false;
+            }
+            return job.isRunning;
+        }
+
+        public void StopJob(string jobname)
+        {
+            jobs[jobname].stop(DateTime.Now);
+        }
     }
     
 }
