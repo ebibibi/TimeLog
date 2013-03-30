@@ -110,7 +110,7 @@ namespace TimeLogTest
         }
 
         [TestMethod]
-        public void CheckIsJobRunning()
+        public void StartAndStopAndStart()
         {
             //Setup
             Job job = new Job("job");
@@ -119,21 +119,33 @@ namespace TimeLogTest
 
             //Test
             Assert.IsFalse(job.isRunning);
+            Assert.AreEqual<DateTime>(new DateTime(0), job.startTime);
+            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
 
             //Execute
             job.start(startTime);
 
             //Test
             Assert.IsTrue(job.isRunning);
-            
+            Assert.AreEqual<DateTime>(startTime, job.startTime);
+            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
+
             //Execute
             job.stop(endTime);
 
             //Test
             Assert.IsFalse(job.isRunning);
-
             Assert.AreEqual<DateTime>(startTime, job.startTime);
             Assert.AreEqual<DateTime>(endTime, job.endTime);
+
+            //Execute
+            DateTime startTime2 = new DateTime(2002, 1, 1, 1, 1, 1);
+            job.start(startTime2);
+
+            //Test
+            Assert.IsTrue(job.isRunning);
+            Assert.AreEqual<DateTime>(startTime2, job.startTime);
+            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
         }
     }
 }

@@ -26,6 +26,7 @@ namespace TimeLog
         {
             this.startTime = startTime;
             this.isRunning = true;
+            this.endTime = new DateTime(0);
             return;
         }
 
