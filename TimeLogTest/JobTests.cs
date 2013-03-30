@@ -33,6 +33,8 @@ namespace TimeLogTest
 
             //Test
             Assert.AreEqual<DateTime>(startTime, job.startTime);
+            Assert.IsTrue(job.isRunning);
+            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
         }
 
         [TestMethod]
