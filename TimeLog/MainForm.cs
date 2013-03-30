@@ -51,14 +51,15 @@ namespace TimeLog
 
         private void CreateJobIcon(string jobname)
         {
-            Button jobIcon = new Button();
-            jobIcon.Text = jobname;
-            jobIcon.Click += jobIcon_Click;
+            Button jobButton = new Button();
+            jobButton.Name = jobname;
+            jobButton.Text = jobname;
+            jobButton.Click += jobButton_Click;
 
-            jobIconsFlowLayoutPanel.Controls.Add(jobIcon);
+            jobIconsFlowLayoutPanel.Controls.Add(jobButton);
         }
 
-        void jobIcon_Click(object sender, EventArgs e)
+        void jobButton_Click(object sender, EventArgs e)
         {
             Button jobIcon = (Button)sender;
             string jobname = jobIcon.Text;
@@ -67,7 +68,8 @@ namespace TimeLog
             if (this.currentJobName != null)
             {
                 jobManager.StopJob(this.currentJobName);
-                jobIcon.BackColor = SystemColors.Control;
+                Button button = (Button)jobIconsFlowLayoutPanel.Controls.Find(this.currentJobName, false)[0];
+                button.BackColor = SystemColors.Control;
             }
 
             //when same value -> job stop only.
