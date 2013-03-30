@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,6 +39,7 @@
             this.jobNameTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.jobIconsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +131,11 @@
             this.jobIconsFlowLayoutPanel.Size = new System.Drawing.Size(237, 187);
             this.jobIconsFlowLayoutPanel.TabIndex = 4;
             // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -164,6 +171,7 @@
         private System.Windows.Forms.TextBox jobNameTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel jobIconsFlowLayoutPanel;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

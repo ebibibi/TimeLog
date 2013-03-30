@@ -13,6 +13,7 @@ namespace TimeLog
     public partial class MainForm : Form
     {
         private static JobManager jobManager = new JobManager();
+        public string currentJobName { get; set; }
 
         public MainForm()
         {
@@ -64,8 +65,20 @@ namespace TimeLog
             jobIcon.BackColor = Color.Yellow;
 
             jobManager.StartJob(jobname);
+            timer.Start();
         }
 
-        public string currentJobName { get; set; }
+        
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            FormRewrite();
+        }
+
+        private void FormRewrite()
+        {
+            currentWorkingTimeLabel.Text = jobManager.currentWorkingTime(currentJobName);
+            //totalWorkingTimeLabel.Text = jobManager.totalWorkingTime(currentJobName);
+        }
     }
 }

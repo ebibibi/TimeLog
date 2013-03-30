@@ -57,6 +57,18 @@ namespace TimeLog
         {
             jobs[jobname].stop(DateTime.Now);
         }
+
+        public string currentWorkingTime(string jobname)
+        {
+            TimeSpan time = jobs[jobname].currentWorkingTime(DateTime.Now);
+            return Timespan2String(time);
+        }
+
+        private string Timespan2String(TimeSpan time)
+        {
+            return time.Hours.ToString("00") + ":" + time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
+        }
+       
     }
     
 }

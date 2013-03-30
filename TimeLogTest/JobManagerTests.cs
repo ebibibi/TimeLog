@@ -98,5 +98,21 @@ namespace TimeLogTest
             Assert.IsFalse(manager.IsRunningJob(jobname));
             
         }
+
+        [TestMethod]
+        public void CurrentWorkingTime()
+        {
+            //Setup
+            string jobname = "CurrentWorkingTime";
+            JobManager manager = new JobManager();
+
+            //Execute
+            manager.CreateNewJob(jobname);
+            manager.StartJob(jobname);
+
+            //Test
+            Assert.IsTrue(manager.currentWorkingTime(jobname).StartsWith("00:00:"));
+
+        }
     }
 }
