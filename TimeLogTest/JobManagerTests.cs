@@ -21,6 +21,7 @@ namespace TimeLogTest
             Assert.IsTrue(manager.IsThereJob(jobname));
             Assert.IsFalse(manager.IsThereJob(jobname + "dummy"));
 
+
         }
 
         [TestMethod]
