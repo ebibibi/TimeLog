@@ -7,7 +7,6 @@ namespace TimeLog
 {
     public class Job
     {
-
         public string name { get; set; }
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
@@ -22,6 +21,12 @@ namespace TimeLog
             this.endTime = new DateTime(0);
             this.totalWorkingTime = new TimeSpan(0);
             
+        }
+
+        public Job(string jobname, TimeSpan totalWorkingTime) : this(jobname)
+        {
+            this.totalWorkingTime = totalWorkingTime;
+
         }
 
         public void start(DateTime startTime)

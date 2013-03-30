@@ -22,6 +22,23 @@ namespace TimeLogTest
             Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
             Assert.AreEqual<TimeSpan>(new TimeSpan(0), job.totalWorkingTime);
         }
+
+        [TestMethod]
+        public void TesttotalWorkingTimeWhenCreated()
+        {
+            //Setup
+            string jobname = "TesttotalWorkingTimeWhenCreated";
+            Job job = new Job(jobname, new TimeSpan(1, 1, 1));
+
+            //Test
+            Assert.AreEqual<string>(jobname, job.name);
+            Assert.AreEqual<DateTime>(new DateTime(0), job.startTime);
+            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
+            Assert.AreEqual<TimeSpan>(new TimeSpan(1, 1, 1), job.totalWorkingTime);
+
+        }
+
+
         
         [TestMethod]
         public void StartJobAndCheckStartTime()
