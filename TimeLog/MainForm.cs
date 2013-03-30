@@ -96,7 +96,7 @@ namespace TimeLog
         private void FormRewrite()
         {
             currentWorkingTimeLabel.Text = jobManager.currentWorkingTime(currentJobName);
-           //totalWorkingTimeLabel.Text = jobManager.totalWorkingTime(currentJobName);
+            totalWorkingTimeLabel.Text = jobManager.totalWorkingTime(currentJobName);
         }
     }
 }
