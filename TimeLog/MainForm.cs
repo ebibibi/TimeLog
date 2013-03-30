@@ -51,8 +51,21 @@ namespace TimeLog
         {
             Button jobIcon = new Button();
             jobIcon.Text = jobname;
+            jobIcon.Click += jobIcon_Click;
 
             jobIconsFlowLayoutPanel.Controls.Add(jobIcon);
         }
+
+        void jobIcon_Click(object sender, EventArgs e)
+        {
+            Button jobIcon = (Button)sender;
+            string jobname = jobIcon.Text;
+            this.currentJobName = jobname;
+            jobIcon.BackColor = Color.Yellow;
+
+            jobManager.StartJob(jobname);
+        }
+
+        public string currentJobName { get; set; }
     }
 }
