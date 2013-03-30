@@ -147,5 +147,25 @@ namespace TimeLogTest
             Assert.AreEqual<DateTime>(startTime2, job.startTime);
             Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
         }
+
+        [TestMethod]
+        public void CurrentWorkingTime()
+        {
+            //Setup
+            string jobname = "CurrentWorkingTime";
+            Job job = new Job(jobname);
+
+            //Execute
+            DateTime startTime = new DateTime(2000, 1, 1, 1, 1, 1);
+            job.start(startTime);
+
+            //Test
+            DateTime currentTime = new DateTime(2000, 1, 1, 2, 2, 2);
+            Assert.AreEqual<TimeSpan>(new TimeSpan(1, 1, 1), job.currentWorkingTime(currentTime));
+
+            currentTime = new DateTime(2000, 1, 1, 3, 3, 3);
+            Assert.AreEqual<TimeSpan>(new TimeSpan(2, 2, 2), job.currentWorkingTime(currentTime));
+
+        }
     }
 }
