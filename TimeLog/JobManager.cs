@@ -3,7 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TimeLogTest
+namespace TimeLog
 {
+    public class JobManager
+    {
+        public void CreateNewJob(string p)
+        {
+            return;
+        }
+
+        public bool IsThereJob(string p)
+        {
+            return true;
+        }
+    }
     
 }
