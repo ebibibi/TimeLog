@@ -114,5 +114,21 @@ namespace TimeLogTest
             Assert.IsTrue(manager.currentWorkingTime(jobname).StartsWith("00:00:"));
 
         }
+
+        [TestMethod]
+        public void totalWorkingTime()
+        {
+            //Setup
+            string jobname = "totalWorkingTime";
+            JobManager manager = new JobManager();
+
+            //Execute
+            manager.CreateNewJob(jobname);
+            manager.StartJob(jobname);
+
+            //Test
+            Assert.IsTrue(manager.totalWorkingTime(jobname).StartsWith("00:00:"));
+
+        }
     }
 }

@@ -68,7 +68,13 @@ namespace TimeLog
         {
             return time.Hours.ToString("00") + ":" + time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
         }
-       
+
+
+        public string totalWorkingTime(string jobname)
+        {
+            TimeSpan time = jobs[jobname].totalWorkingTime;
+            return Timespan2String(time);
+        }
     }
     
 }
