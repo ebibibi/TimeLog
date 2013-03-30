@@ -11,23 +11,28 @@ namespace TimeLog
         public string name { get; set; }
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
-        
+        public bool isRunning { get; set; }
 
         public Job(string jobname)
         {
             this.name = jobname;
+            this.isRunning = false;
         }
 
         public void start(DateTime startTime)
         {
             this.startTime = startTime;
+            this.isRunning = true;
             return;
         }
 
         public void stop(DateTime endTime)
         {
             this.endTime = endTime;
+            this.isRunning = false;
             return;
         }
+        
+        
     }
 }
