@@ -68,6 +68,12 @@ namespace TimeLogTest
 
             //Execute
             job.start(startTime);
+
+            //Test
+            Assert.AreEqual<DateTime>(startTime, job.startTime);
+            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
+
+            //Execute
             job.stop(endTime);
 
             //Test
