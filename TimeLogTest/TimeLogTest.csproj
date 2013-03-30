@@ -50,8 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="JobManager.cs" />
     <Compile Include="JobTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="JobManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimeLog\TimeLog.csproj">
