@@ -125,10 +125,18 @@ namespace TimeLogTest
             //Execute
             manager.CreateNewJob(jobname);
             manager.StartJob(jobname);
+            System.Threading.Thread.Sleep(1000);
 
             //Test
             Assert.IsTrue(manager.totalWorkingTime(jobname).StartsWith("00:00:"));
 
+            manager.StopJob(jobname);
+            string time = manager.totalWorkingTime(jobname);
+
+            manager.StartJob(jobname);
+            System.Threading.Thread.Sleep(1000);
+            Assert.IsTrue(time.CompareTo(manager.totalWorkingTime(jobname)) != 0);
+            
         }
     }
 }

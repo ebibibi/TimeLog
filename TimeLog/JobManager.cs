@@ -73,6 +73,8 @@ namespace TimeLog
         public string totalWorkingTime(string jobname)
         {
             TimeSpan time = jobs[jobname].totalWorkingTime;
+            if (jobs[jobname].isRunning)
+                time = time.Add(jobs[jobname].currentWorkingTime(DateTime.Now));
             return Timespan2String(time);
         }
     }
