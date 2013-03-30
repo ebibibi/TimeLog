@@ -41,7 +41,15 @@ namespace TimeLog
 
         public TimeSpan currentWorkingTime(DateTime currentTime)
         {
-            return currentTime - this.startTime;
+            if (this.isRunning)
+            {
+                return currentTime - this.startTime;
+            }
+            else
+            {
+                return new TimeSpan(0);
+            }
+        
         }
     }
 }
