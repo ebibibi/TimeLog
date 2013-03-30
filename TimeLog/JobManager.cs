@@ -7,14 +7,32 @@ namespace TimeLog
 {
     public class JobManager
     {
-        public void CreateNewJob(string p)
+        private static Dictionary<string, Job> jobs = new Dictionary<string, Job>();
+        
+        public void CreateNewJob(string jobname)
         {
-            return;
+            Job job = new Job(jobname);
+            jobs.Add(jobname, job);
         }
 
-        public bool IsThereJob(string p)
+        public bool IsThereJob(string jobname)
         {
-            return true;
+            Job job = null;
+            try
+            {
+                job = jobs[jobname];
+            }
+            catch {}
+
+            if (job != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+                
         }
     }
     

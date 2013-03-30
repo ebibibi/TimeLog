@@ -18,7 +18,26 @@ namespace TimeLogTest
             
             //Test
             Assert.IsTrue(manager.IsThereJob("test job1"));
+            Assert.IsFalse(manager.IsThereJob("test job2"));
 
         }
+
+        [TestMethod]
+        public void Create2Jobs()
+        {
+            //Setup
+            JobManager manager = new JobManager();
+
+            //Execute
+            manager.CreateNewJob("test job1");
+            manager.CreateNewJob("test job2");
+            
+            //Test
+            Assert.IsTrue(manager.IsThereJob("test job1"));
+            Assert.IsTrue(manager.IsThereJob("test job2"));
+
+        }
+
+        
     }
 }
