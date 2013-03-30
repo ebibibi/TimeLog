@@ -18,6 +18,7 @@ namespace TimeLog
         public MainForm()
         {
             InitializeComponent();
+            currentJobName = null;
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,9 +62,26 @@ namespace TimeLog
         {
             Button jobIcon = (Button)sender;
             string jobname = jobIcon.Text;
-            this.currentJobName = jobname;
-            jobIcon.BackColor = Color.Yellow;
 
+            //job stop
+            if (this.currentJobName != null)
+            {
+                jobManager.StopJob(this.currentJobName);
+                jobIcon.BackColor = SystemColors.Control;
+            }
+
+            //when same value -> job stop only.
+            if (currentJobName != null && currentJobName.CompareTo(jobname) == 0)
+            {
+                this.currentJobName = null;
+                timer.Stop();
+                return;
+            }
+
+
+            //job start
+            this.currentJobName = jobname;
+            jobIcon.BackColor = SystemColors.Highlight;
             jobManager.StartJob(jobname);
             timer.Start();
         }
