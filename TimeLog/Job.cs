@@ -20,6 +20,7 @@ namespace TimeLog
             this.isRunning = false;
             this.startTime = new DateTime(0); 
             this.endTime = new DateTime(0);
+            this.totalWorkingTime = new TimeSpan(0);
             
         }
 
