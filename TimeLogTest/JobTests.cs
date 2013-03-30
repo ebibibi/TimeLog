@@ -21,7 +21,7 @@ namespace TimeLogTest
         }
         
         [TestMethod]
-        public void StartJob()
+        public void StartJobAndCheckStartTime()
         {
             //Setup
             string jobname = "StartJobTest";
@@ -36,7 +36,7 @@ namespace TimeLogTest
         }
 
         [TestMethod]
-        public void Start2Jobs()
+        public void Start2JobsAndCheckStartTimes()
         {
             //Setup
             Job job1 = new Job("job1");
@@ -55,7 +55,7 @@ namespace TimeLogTest
         }
 
         [TestMethod]
-        public void StopJob()
+        public void StopJobAndCheckStartAndStopTime()
         {
             //Setup
             Job job = new Job("job");
@@ -72,7 +72,7 @@ namespace TimeLogTest
         }
 
         [TestMethod]
-        public void Stop2Jobs()
+        public void Stop2JobsAndCheckStartAndStopTimes()
         {
             //Setup
             Job job1 = new Job("job1");
