@@ -12,6 +12,7 @@ namespace TimeLog
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
         public bool isRunning { get; set; }
+        public TimeSpan totalWorkingTime { get; set; }
 
         public Job(string jobname)
         {
@@ -34,6 +35,7 @@ namespace TimeLog
         {
             this.endTime = endTime;
             this.isRunning = false;
+            this.totalWorkingTime += this.endTime - this.startTime;
             return;
         }
 
@@ -51,5 +53,7 @@ namespace TimeLog
             }
         
         }
+
+        
     }
 }
