@@ -12,7 +12,12 @@ namespace TimeLog
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
         public bool isRunning { get; set; }
-        public string totalWorkingTime { get; set; }
+
+        private TimeSpan _totalWorkingTime;
+        public string totalWorkingTime 
+        {
+            get { return TimeHelper.Timespan2String(_totalWorkingTime); }
+        }
 
         public Job(string jobname)
         {
@@ -20,13 +25,13 @@ namespace TimeLog
             this.isRunning = false;
             this.startTime = TimeHelper.Null();
             this.endTime = TimeHelper.Null();
-            this.totalWorkingTime = "00:00:00";
+            this._totalWorkingTime = new TimeSpan(0);
             
         }
 
         public Job(string jobname, TimeSpan totalWorkingTime) : this(jobname)
         {
-            this.totalWorkingTime = Timespan2String(totalWorkingTime);
+            this._totalWorkingTime = totalWorkingTime;
 
         }
 
@@ -42,7 +47,7 @@ namespace TimeLog
         {
             this.endTime = endTime;
             this.isRunning = false;
-            this.totalWorkingTime += this.endTime - this.startTime;
+            this._totalWorkingTime += this.endTime - this.startTime;
             return;
         }
 
