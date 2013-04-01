@@ -62,11 +62,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="_TestDatabase_1DataSet.Designer.cs">
+    <Compile Include="SampleDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>_TestDatabase_1DataSet.xsd</DependentUpon>
+      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TimeSpanAndStringTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimeLog\TimeLog.csproj">
@@ -75,21 +76,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="_TestDatabase_1DataSet.xsc">
-      <DependentUpon>_TestDatabase_1DataSet.xsd</DependentUpon>
+    <None Include="SampleDatabaseDataSet.xsc">
+      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
     </None>
-    <None Include="_TestDatabase_1DataSet.xsd">
+    <None Include="SampleDatabaseDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_TestDatabase_1DataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>SampleDatabaseDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="_TestDatabase_1DataSet.xss">
-      <DependentUpon>_TestDatabase_1DataSet.xsd</DependentUpon>
+    <None Include="SampleDatabaseDataSet.xss">
+      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Choose>

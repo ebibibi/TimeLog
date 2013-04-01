@@ -18,9 +18,9 @@ namespace TimeLogTest
 
             //Test
             Assert.AreEqual<string>(jobname, job.name);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.startTime);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
-            Assert.AreEqual<TimeSpan>(new TimeSpan(0), job.totalWorkingTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.startTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.endTime);
+            Assert.AreEqual<string>("00:00:00", job.totalWorkingTime);
         }
 
         [TestMethod]
@@ -32,9 +32,9 @@ namespace TimeLogTest
 
             //Test
             Assert.AreEqual<string>(jobname, job.name);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.startTime);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
-            Assert.AreEqual<TimeSpan>(new TimeSpan(1, 1, 1), job.totalWorkingTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.startTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.endTime);
+            Assert.AreEqual<string>("01:01:01", job.totalWorkingTime);
 
         }
 
@@ -54,7 +54,7 @@ namespace TimeLogTest
             //Test
             Assert.AreEqual<DateTime>(startTime, job.startTime);
             Assert.IsTrue(job.isRunning);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.endTime);
         }
 
         [TestMethod]
@@ -89,7 +89,7 @@ namespace TimeLogTest
 
             //Test
             Assert.AreEqual<DateTime>(startTime, job.startTime);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.endTime);
 
             //Execute
             job.stop(endTime);
@@ -137,8 +137,8 @@ namespace TimeLogTest
 
             //Test
             Assert.IsFalse(job.isRunning);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.startTime);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.startTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.endTime);
 
             //Execute
             job.start(startTime);
@@ -146,7 +146,7 @@ namespace TimeLogTest
             //Test
             Assert.IsTrue(job.isRunning);
             Assert.AreEqual<DateTime>(startTime, job.startTime);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.endTime);
 
             //Execute
             job.stop(endTime);
@@ -163,7 +163,7 @@ namespace TimeLogTest
             //Test
             Assert.IsTrue(job.isRunning);
             Assert.AreEqual<DateTime>(startTime2, job.startTime);
-            Assert.AreEqual<DateTime>(new DateTime(0), job.endTime);
+            Assert.AreEqual<DateTime>(TimeHelper.Null(), job.endTime);
         }
 
         [TestMethod]
@@ -206,7 +206,7 @@ namespace TimeLogTest
             job.stop(endTime);
 
             //Test
-            Assert.AreEqual<TimeSpan>(new TimeSpan(1, 1, 1), job.totalWorkingTime);
+            Assert.AreEqual<string>("01:01:01", job.totalWorkingTime);
 
             //Execute
             startTime = new DateTime(2000, 1, 1, 3, 3, 3);
@@ -214,7 +214,7 @@ namespace TimeLogTest
             job.start(startTime);
             job.stop(endTime);
 
-            Assert.AreEqual<TimeSpan>(new TimeSpan(2, 2, 2), job.totalWorkingTime);
+            Assert.AreEqual<string>("02:02:02", job.totalWorkingTime);
         }
     }
 }

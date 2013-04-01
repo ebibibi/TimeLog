@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace TimeLog
 {
@@ -13,6 +15,12 @@ namespace TimeLog
         {
             Job job = new Job(jobname);
             jobs.Add(jobname, job);
+
+            using (var context = new JobContext())
+            {
+                context.Jobs.Add(job);
+                context.SaveChanges();
+            }
         }
 
         public bool IsThereJob(string jobname)
@@ -61,22 +69,21 @@ namespace TimeLog
         public string currentWorkingTime(string jobname)
         {
             TimeSpan time = jobs[jobname].currentWorkingTime(DateTime.Now);
-            return Timespan2String(time);
+            return TimeHelper.Timespan2String(time);
         }
 
-        private string Timespan2String(TimeSpan time)
-        {
-            return time.Hours.ToString("00") + ":" + time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
-        }
+        
 
 
         public string totalWorkingTime(string jobname)
         {
-            TimeSpan time = jobs[jobname].totalWorkingTime;
+            TimeSpan time = TimeHelper.String2Timespan(jobs[jobname].totalWorkingTime);
             if (jobs[jobname].isRunning)
                 time = time.Add(jobs[jobname].currentWorkingTime(DateTime.Now));
-            return Timespan2String(time);
+            return TimeHelper.Timespan2String(time);
         }
+
+        
     }
     
 }

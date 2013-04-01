@@ -7,25 +7,26 @@ namespace TimeLog
 {
     public class Job
     {
+        public int jobID { get; set; }
         public string name { get; set; }
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
         public bool isRunning { get; set; }
-        public TimeSpan totalWorkingTime { get; set; }
+        public string totalWorkingTime { get; set; }
 
         public Job(string jobname)
         {
             this.name = jobname;
             this.isRunning = false;
-            this.startTime = new DateTime(0); 
-            this.endTime = new DateTime(0);
-            this.totalWorkingTime = new TimeSpan(0);
+            this.startTime = TimeHelper.Null();
+            this.endTime = TimeHelper.Null();
+            this.totalWorkingTime = "00:00:00";
             
         }
 
         public Job(string jobname, TimeSpan totalWorkingTime) : this(jobname)
         {
-            this.totalWorkingTime = totalWorkingTime;
+            this.totalWorkingTime = Timespan2String(totalWorkingTime);
 
         }
 
@@ -33,7 +34,7 @@ namespace TimeLog
         {
             this.startTime = startTime;
             this.isRunning = true;
-            this.endTime = new DateTime(0);
+            this.endTime = TimeHelper.Null();
             return;
         }
 
@@ -58,6 +59,11 @@ namespace TimeLog
                 return new TimeSpan(0);
             }
         
+        }
+
+        private string Timespan2String(TimeSpan time)
+        {
+            return time.Hours.ToString("00") + ":" + time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
         }
 
         
