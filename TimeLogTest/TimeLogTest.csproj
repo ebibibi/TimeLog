@@ -62,6 +62,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SampleDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TimeSpanAndStringTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +80,17 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SampleDatabaseDataSet.xsc">
+      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SampleDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SampleDatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SampleDatabaseDataSet.xss">
+      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Choose>

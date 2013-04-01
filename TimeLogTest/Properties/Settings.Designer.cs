@@ -44,5 +44,16 @@ namespace TimeLogTest.Properties {
                 return ((string)(this["SampleDatabaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=C:\\Users\\mebisuda\\Dropbox\\programming\\C#\\TimeLog\\TimeLogTest\\bin\\Debu" +
+            "g\\SampleDatabase.sdf")]
+        public string forTest {
+            get {
+                return ((string)(this["forTest"]));
+            }
+        }
     }
 }
