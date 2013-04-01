@@ -17,6 +17,7 @@ namespace TimeLog
         public string totalWorkingTime 
         {
             get { return TimeHelper.Timespan2String(_totalWorkingTime); }
+            set { _totalWorkingTime = TimeHelper.String2Timespan(value); }
         }
 
         public Job(string jobname)
