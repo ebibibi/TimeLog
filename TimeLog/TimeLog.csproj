@@ -61,14 +61,6 @@
     <Compile Include="JobManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleDatabaseDataSet.cs">
-      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="SampleDatabaseDataSet.Designer.cs">
-      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="TimeHelper.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -92,16 +84,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SampleDatabaseDataSet.xsc">
-      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SampleDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SampleDatabaseDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="SampleDatabaseDataSet.xss">
-      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

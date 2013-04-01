@@ -13,6 +13,7 @@ namespace TimeLog
         
         public void CreateNewJob(string jobname)
         {
+
             Job job = new Job(jobname);
             jobs.Add(jobname, job);
 
