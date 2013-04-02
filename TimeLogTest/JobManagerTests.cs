@@ -137,5 +137,22 @@ namespace TimeLogTest
             Assert.IsTrue(time.CompareTo(manager.totalWorkingTime(jobname)) != 0);
             
         }
+
+        [TestMethod]
+        public void ReadJobsFromDatabase()
+        {
+            //Setup
+            string jobname = "ReadJobsFromDatabase";
+            JobManager manager = new JobManager();
+
+            //Execute
+            manager.CreateNewJob(jobname);
+            manager = null;
+            manager = new JobManager();
+
+            //Test
+            Assert.IsTrue(manager.IsThereJob(jobname));
+            Assert.IsFalse(manager.IsThereJob(jobname + "dummy"));
+        }
     }
 }

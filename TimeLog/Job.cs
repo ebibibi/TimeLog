@@ -20,13 +20,18 @@ namespace TimeLog
             set { _totalWorkingTime = TimeHelper.String2Timespan(value); }
         }
 
-        public Job(string jobname)
+        public Job()
         {
-            this.name = jobname;
+            this.name = null;
             this.isRunning = false;
             this.startTime = TimeHelper.Null();
             this.endTime = TimeHelper.Null();
             this._totalWorkingTime = new TimeSpan(0);
+        }
+
+        public Job(string jobname) : this()
+        {
+            this.name = jobname;
             
         }
 

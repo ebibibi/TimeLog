@@ -9,68 +9,100 @@ namespace TimeLog
 {
     public class JobManager
     {
-        private static Dictionary<string, Job> jobs = new Dictionary<string, Job>();
-        
         public void CreateNewJob(string jobname)
         {
-
-            Job job = new Job(jobname);
-            jobs.Add(jobname, job);
-
+            
+            //check if already exists.
             using (var context = new JobContext())
             {
-                context.Jobs.Add(job);
+                try
+                {
+                    var job = context.Jobs.First(j => j.name == jobname);
+                    if (job != null)
+                    {
+                        Debug.WriteLine(jobname + "はすでにテーブルに存在しているため追加しませんでした。");
+                        return;
+                    }
+                }
+                catch
+                {
+                }
+
+                
+            }
+
+            Job newjob = new Job(jobname);
+            using (var context = new JobContext())
+            {
+
+                context.Jobs.Add(newjob);
                 context.SaveChanges();
             }
         }
 
         public bool IsThereJob(string jobname)
         {
-            Job job = null;
-            try
+            using (var context = new JobContext())
             {
-                job = jobs[jobname];
-            }
-            catch {}
+                Job job = null;
+                try
+                {
+                    job = context.Jobs.First(j => j.name == jobname);
+                }
+                catch { }
 
-            if (job != null)
-            {
-                return true;
+                if (job != null)
+                    return true;
+                else
+                    return false;
             }
-            else
-            {
-                return false;
-            }
-                
         }
 
         public void StartJob(string jobname)
         {
-            Job job = jobs[jobname];
-            job.start(DateTime.Now);
+            using (var context = new JobContext())
+            {
+                var job = context.Jobs.First(j => j.name == jobname);
+                job.start(DateTime.Now);
+                context.SaveChanges();
+            }
         }
 
         public bool IsRunningJob(string jobname)
         {
-            Job job;
-            try
+            using (var context = new JobContext())
             {
-                job = jobs[jobname];
-            } catch {
-                return false;
+                try
+                {
+                    var job = context.Jobs.First(j => j.name == jobname);
+                    return job.isRunning;
+                }
+                catch
+                {
+                    return false;
+                }
+                
             }
-            return job.isRunning;
         }
 
         public void StopJob(string jobname)
         {
-            jobs[jobname].stop(DateTime.Now);
+            using (var context = new JobContext())
+            {
+                var job = context.Jobs.First(j => j.name == jobname);
+                job.stop(DateTime.Now);
+                context.SaveChanges();
+            }
         }
 
         public string currentWorkingTime(string jobname)
         {
-            TimeSpan time = jobs[jobname].currentWorkingTime(DateTime.Now);
-            return TimeHelper.Timespan2String(time);
+            using (var context = new JobContext())
+            {
+                var job = context.Jobs.First(j => j.name == jobname);
+                TimeSpan time = job.currentWorkingTime(DateTime.Now);
+                return TimeHelper.Timespan2String(time);
+            }
         }
 
         
@@ -78,13 +110,17 @@ namespace TimeLog
 
         public string totalWorkingTime(string jobname)
         {
-            TimeSpan time = TimeHelper.String2Timespan(jobs[jobname].totalWorkingTime);
-            if (jobs[jobname].isRunning)
-                time = time.Add(jobs[jobname].currentWorkingTime(DateTime.Now));
-            return TimeHelper.Timespan2String(time);
+            using (var context = new JobContext())
+            {
+                var job = context.Jobs.First(j => j.name == jobname);
+
+                TimeSpan time = TimeHelper.String2Timespan(job.totalWorkingTime);
+                if (job.isRunning)
+                    time = time.Add(job.currentWorkingTime(DateTime.Now));
+                return TimeHelper.Timespan2String(time);
+            }
         }
 
-        
     }
     
 }
