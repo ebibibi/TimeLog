@@ -19,6 +19,11 @@ namespace TimeLog
         {
             InitializeComponent();
             currentJobName = null;
+
+            foreach(var job in jobManager.GetJobList())
+            {
+                CreateJobIcon(job);
+            }
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
