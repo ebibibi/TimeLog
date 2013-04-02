@@ -105,5 +105,35 @@ namespace TimeLog
             currentWorkingTimeLabel.Text = jobManager.currentWorkingTime(currentJobName);
             totalWorkingTimeLabel.Text = jobManager.totalWorkingTime(currentJobName);
         }
+
+        private void cSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = "workhistory.csv";
+            sfd.InitialDirectory = @"C:\";
+            sfd.Title = "保存先のファイルを選択してください";
+            sfd.RestoreDirectory = true;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.Stream stream;
+                stream = sfd.OpenFile();
+                if (stream != null)
+                {
+                    System.IO.StreamWriter sw = new System.IO.StreamWriter(stream);
+
+                    //header
+                    sw.WriteLine("name, date, starttime, endtime, duration");
+
+                    List<JobRecord> records = jobManager.GetAllJobRecords();
+                    foreach (JobRecord record in records)
+                    {
+                        sw.WriteLine("{0},{1},{2},{3},{4}", record.name, record.date, record.startTime, record.endTime, record.duration);
+                    }
+                    
+                    sw.Close();
+                    stream.Close();
+                }
+            }
+        }
     }
 }

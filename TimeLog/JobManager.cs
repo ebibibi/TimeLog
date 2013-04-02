@@ -159,6 +159,24 @@ namespace TimeLog
                 return null;
             }
         }
+
+        public List<JobRecord> GetAllJobRecords()
+        {
+            try
+            {
+                using (var context = new JobContext())
+                {
+                    var records = from record in context.JobRecords
+                                  select record;
+                    return records.ToList();
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
     
 }

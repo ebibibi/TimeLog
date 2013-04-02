@@ -62,21 +62,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SampleDatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="SampleDatabaseDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SampleDatabaseDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="SampleDatabaseDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SampleDatabaseDataSet2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="TimeSpanAndStringTest.cs" />
     <Compile Include="JobRecordTest.cs" />
   </ItemGroup>
@@ -91,39 +76,6 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="SampleDatabaseDataSet.xsc">
-      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SampleDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SampleDatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SampleDatabaseDataSet.xss">
-      <DependentUpon>SampleDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SampleDatabaseDataSet1.xsc">
-      <DependentUpon>SampleDatabaseDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="SampleDatabaseDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SampleDatabaseDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SampleDatabaseDataSet1.xss">
-      <DependentUpon>SampleDatabaseDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="SampleDatabaseDataSet2.xsc">
-      <DependentUpon>SampleDatabaseDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="SampleDatabaseDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SampleDatabaseDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SampleDatabaseDataSet2.xss">
-      <DependentUpon>SampleDatabaseDataSet2.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Choose>
