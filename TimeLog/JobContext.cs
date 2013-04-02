@@ -10,5 +10,6 @@ namespace TimeLog
     public class JobContext : DbContext
     {
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<JobRecord> JobRecords { get; set; }
     }
 }

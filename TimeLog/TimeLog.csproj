@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JobContext.cs" />
+    <Compile Include="JobRecord.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -11,7 +11,6 @@ namespace TimeLog
     {
         public void CreateNewJob(string jobname)
         {
-            
             //check if already exists.
             using (var context = new JobContext())
             {
@@ -90,7 +89,12 @@ namespace TimeLog
             using (var context = new JobContext())
             {
                 var job = context.Jobs.First(j => j.name == jobname);
-                job.stop(DateTime.Now);
+                DateTime now = DateTime.Now;
+                job.stop(now);
+
+                JobRecord record = new JobRecord(job);
+                context.JobRecords.Add(record);
+
                 context.SaveChanges();
             }
         }
@@ -136,6 +140,24 @@ namespace TimeLog
             }
 
             return joblist;
+        }
+
+        public List<JobRecord> GetAllRecordAboutJob(string jobname)
+        {
+            try
+            {
+                using (var context = new JobContext())
+                {
+                    var records = from record in context.JobRecords
+                                  where record.name == jobname
+                                  select record;
+                    return records.ToList();
+                }
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
     
