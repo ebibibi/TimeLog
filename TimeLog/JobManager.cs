@@ -121,6 +121,22 @@ namespace TimeLog
             }
         }
 
+
+
+        public List<string> GetJobList()
+        {
+            List<string> joblist = new List<string>();
+
+            using (var context = new JobContext())
+            {
+                foreach (var job in context.Jobs)
+                {
+                    joblist.Add(job.name);
+                }
+            }
+
+            return joblist;
+        }
     }
     
 }

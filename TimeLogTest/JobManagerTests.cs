@@ -154,5 +154,25 @@ namespace TimeLogTest
             Assert.IsTrue(manager.IsThereJob(jobname));
             Assert.IsFalse(manager.IsThereJob(jobname + "dummy"));
         }
+
+        [TestMethod]
+        public void GetJobList()
+        {
+            //Setup
+            string jobname = "GetJobList";
+            JobManager manager = new JobManager();
+
+            //Execute
+            manager.CreateNewJob(jobname);
+            manager = null;
+            manager = new JobManager();
+            var list = manager.GetJobList();
+
+            //Test
+            Assert.IsTrue(list.Count > 0);
+            Assert.IsTrue(list.Contains(jobname));
+
+        }
+
     }
 }
