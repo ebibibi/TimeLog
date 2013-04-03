@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentWorkingTimeLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,8 +42,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.jobIconsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +51,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(261, 24);
+            this.menuStrip.Size = new System.Drawing.Size(405, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -64,10 +64,25 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.fileToolStripMenuItem.Text = "File(&F)";
             // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cSVToolStripMenuItem});
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.exportToolStripMenuItem.Text = "Export";
+            // 
+            // cSVToolStripMenuItem
+            // 
+            this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
+            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.cSVToolStripMenuItem.Text = "CSV";
+            this.cSVToolStripMenuItem.Click += new System.EventHandler(this.cSVToolStripMenuItem_Click);
+            // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -113,7 +128,7 @@
             // 
             this.jobNameTextBox.Location = new System.Drawing.Point(77, 115);
             this.jobNameTextBox.Name = "jobNameTextBox";
-            this.jobNameTextBox.Size = new System.Drawing.Size(174, 19);
+            this.jobNameTextBox.Size = new System.Drawing.Size(314, 19);
             this.jobNameTextBox.TabIndex = 3;
             this.jobNameTextBox.TextChanged += new System.EventHandler(this.jobNameTextBox_TextChanged);
             this.jobNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.jobNameTextBox_KeyDown);
@@ -131,33 +146,18 @@
             // 
             this.jobIconsFlowLayoutPanel.Location = new System.Drawing.Point(14, 140);
             this.jobIconsFlowLayoutPanel.Name = "jobIconsFlowLayoutPanel";
-            this.jobIconsFlowLayoutPanel.Size = new System.Drawing.Size(237, 187);
+            this.jobIconsFlowLayoutPanel.Size = new System.Drawing.Size(377, 187);
             this.jobIconsFlowLayoutPanel.TabIndex = 4;
             // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cSVToolStripMenuItem});
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            // 
-            // cSVToolStripMenuItem
-            // 
-            this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
-            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cSVToolStripMenuItem.Text = "CSV";
-            this.cSVToolStripMenuItem.Click += new System.EventHandler(this.cSVToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(261, 339);
+            this.ClientSize = new System.Drawing.Size(405, 339);
             this.Controls.Add(this.jobIconsFlowLayoutPanel);
             this.Controls.Add(this.jobNameTextBox);
             this.Controls.Add(this.label5);
