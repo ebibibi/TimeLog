@@ -61,10 +61,12 @@ namespace TimeLog
             jobButton.Name = jobname;
             jobButton.Text = jobname;
             jobButton.Click += jobButton_Click;
+            jobButton.Font = new Font("MS UI Gothic", 9);
 
             //size
-            Size size = TextRenderer.MeasureText(jobname, new Font("Verdana", 10));
-            jobButton.Width = size.Width;
+            Size size = TextRenderer.MeasureText(jobname, new Font("MS UI Gothic", 10));
+            jobButton.Width = size.Width + 10;
+
 
             jobButton.ContextMenuStrip = jobButtonContextMenuStrip;
             jobIconsFlowLayoutPanel.Controls.Add(jobButton);
