@@ -190,7 +190,7 @@ namespace TimeLogTest
             manager.StopJob(jobname);
 
             List<JobRecord> records = manager.GetAllRecordAboutJob(jobname);
-            JobRecord record = records.First();
+            JobRecord record = records.Last();
             Assert.IsTrue(0 < records.Count());
             Assert.AreEqual(DateTime.Today, record.date);
             Assert.IsTrue(new TimeSpan(0, 0, 1) <= TimeHelper.String2Timespan(record.duration));
