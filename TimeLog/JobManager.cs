@@ -177,6 +177,17 @@ namespace TimeLog
             }
         }
 
+
+        public void DeleteJob(string jobname)
+        {
+            using (var context = new JobContext())
+            {
+                var job = context.Jobs.First(j => j.name == jobname);
+                context.Jobs.Remove(job);
+
+                context.SaveChanges();
+            }
+        }
     }
     
 }

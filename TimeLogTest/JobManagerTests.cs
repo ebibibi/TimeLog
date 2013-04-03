@@ -210,5 +210,30 @@ namespace TimeLogTest
             Assert.IsTrue(0 < records.Count());
         }
 
+        [TestMethod]
+        public void DeleteJob()
+        {
+            //Setup
+            string jobname = "DeleteJob";
+            JobManager manager = new JobManager();
+
+            //Execute
+            manager.CreateNewJob(jobname);
+            manager = null;
+            manager = new JobManager();
+            var list = manager.GetJobList();
+
+            //Test
+            Assert.IsTrue(list.Contains(jobname));
+
+            //Execute
+            manager.DeleteJob(jobname);
+            list = manager.GetJobList();
+
+            //Test
+            Assert.IsFalse(list.Contains(jobname));
+
+        }
+
     }
 }

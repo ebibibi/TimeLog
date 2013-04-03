@@ -65,6 +65,7 @@ namespace TimeLog
             Size size = TextRenderer.MeasureText(jobname, new Font("Verdana", 10));
             jobButton.Width = size.Width;
 
+            jobButton.ContextMenuStrip = jobButtonContextMenuStrip;
             jobIconsFlowLayoutPanel.Controls.Add(jobButton);
         }
 
@@ -138,6 +139,19 @@ namespace TimeLog
                     stream.Close();
                 }
             }
+        }
+
+        private void toolStripMenuItem_deleteButton_Click(object sender, EventArgs e)
+        {
+            ToolStripItem item = sender as ToolStripItem;
+            ContextMenuStrip strip = item.Owner as ContextMenuStrip;
+            Button button = strip.SourceControl as Button;
+
+            string jobname = button.Text;
+            jobManager.DeleteJob(jobname);
+
+            button.Visible = false;
+
         }
     }
 }
