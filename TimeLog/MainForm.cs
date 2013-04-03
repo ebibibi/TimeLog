@@ -149,6 +149,12 @@ namespace TimeLog
             Button button = strip.SourceControl as Button;
 
             string jobname = button.Text;
+            if (jobManager.IsRunningJob(jobname))
+            {
+                jobManager.StopJob(jobname);
+                this.currentJobName = null;
+                timer.Stop();
+            }
             jobManager.DeleteJob(jobname);
 
             button.Visible = false;
