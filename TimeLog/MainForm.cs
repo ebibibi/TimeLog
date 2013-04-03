@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace TimeLog
 {
@@ -152,6 +153,26 @@ namespace TimeLog
 
             button.Visible = false;
 
+        }
+
+        private void バージョン情報ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Assembly entryAssembly = Assembly.GetEntryAssembly();
+            object[] copyrightArray = entryAssembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+
+            string copyright;
+            if ((copyrightArray != null) && (copyrightArray.Length > 0))
+            {
+                copyright = ((AssemblyCopyrightAttribute)copyrightArray[0]).Copyright;
+            }
+            else
+            {
+                copyright = "";
+            }
+            string message = string.Format("{0} Version {1}\n{2}",
+                Application.ProductName, Application.ProductVersion, copyright);
+
+            MessageBox.Show(message, "バージョン情報", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
     }
 }

@@ -44,6 +44,8 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.jobButtonContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.StripMenuItem_deleteButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.ヘルプHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.バージョン情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.jobButtonContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +53,8 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.ヘルプHToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(405, 24);
@@ -161,14 +164,29 @@
             this.jobButtonContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StripMenuItem_deleteButton});
             this.jobButtonContextMenuStrip.Name = "jobButtonContextMenuStrip";
-            this.jobButtonContextMenuStrip.Size = new System.Drawing.Size(153, 48);
+            this.jobButtonContextMenuStrip.Size = new System.Drawing.Size(99, 26);
             // 
             // StripMenuItem_deleteButton
             // 
             this.StripMenuItem_deleteButton.Name = "StripMenuItem_deleteButton";
-            this.StripMenuItem_deleteButton.Size = new System.Drawing.Size(152, 22);
+            this.StripMenuItem_deleteButton.Size = new System.Drawing.Size(98, 22);
             this.StripMenuItem_deleteButton.Text = "削除";
             this.StripMenuItem_deleteButton.Click += new System.EventHandler(this.toolStripMenuItem_deleteButton_Click);
+            // 
+            // ヘルプHToolStripMenuItem
+            // 
+            this.ヘルプHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.バージョン情報ToolStripMenuItem});
+            this.ヘルプHToolStripMenuItem.Name = "ヘルプHToolStripMenuItem";
+            this.ヘルプHToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ヘルプHToolStripMenuItem.Text = "ヘルプ(&H)";
+            // 
+            // バージョン情報ToolStripMenuItem
+            // 
+            this.バージョン情報ToolStripMenuItem.Name = "バージョン情報ToolStripMenuItem";
+            this.バージョン情報ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.バージョン情報ToolStripMenuItem.Text = "バージョン情報";
+            this.バージョン情報ToolStripMenuItem.Click += new System.EventHandler(this.バージョン情報ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -211,6 +229,8 @@
         private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip jobButtonContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem StripMenuItem_deleteButton;
+        private System.Windows.Forms.ToolStripMenuItem ヘルプHToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem バージョン情報ToolStripMenuItem;
     }
 }
 
