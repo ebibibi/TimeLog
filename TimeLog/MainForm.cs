@@ -127,7 +127,7 @@ namespace TimeLog
                 stream = sfd.OpenFile();
                 if (stream != null)
                 {
-                    System.IO.StreamWriter sw = new System.IO.StreamWriter(stream);
+                    System.IO.StreamWriter sw = new System.IO.StreamWriter(stream, new UTF8Encoding(true));
 
                     //header
                     sw.WriteLine("name, date, starttime, endtime, duration");
